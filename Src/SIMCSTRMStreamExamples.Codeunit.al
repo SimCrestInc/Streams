@@ -90,7 +90,7 @@ codeunit 50100 "SIMC STRM Stream Examples"
         FileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Select Excel file to import', '', 'Excel files (*.xlsx)|*.xlsx', 'xlsx');
         // Show File name
         Message('File name: ' + FileName);
-        // Read the Sheet name. Notice we use the Stream version for SelectSheetName
+        // Read the Sheet name. Notice we use the Stream version of SelectSheetName
         SheetName := TempExcelBuffer.SelectSheetsNameStream(ReadInStream);
         Message('Sheet name: ' + SheetName);
         //  Open the Excel book. We use the Stream version of that call
