@@ -1,14 +1,14 @@
 {
   "id": "b08d3358-f4e1-4307-9d3b-a4ccab62cbf7",
   "name": "Streams",
-  "publisher": "Default publisher",
+  "publisher": "SimCrest",
   "version": "1.0.0.0",
-  "brief": "",
-  "description": "",
-  "privacyStatement": "",
-  "EULA": "",
-  "help": "",
-  "url": "",
+  "brief": "Streams",
+  "description": "Streams",
+  "privacyStatement": "https://simcrest.com/",
+  "EULA": "https://simcrest.com/",
+  "help": "https://simcrest.com/",
+  "url": "https://simcrest.com/",
   "logo": "",
   "dependencies": [],
   "screenshots": [],
@@ -19,6 +19,9 @@
       "from": 50100,
       "to": 50149
     }
+  ],
+  "features": [
+    "TranslationFile"
   ],
   "resourceExposurePolicy": {
     "allowDebugging": true,

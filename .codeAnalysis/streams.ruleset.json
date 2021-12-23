@@ -1,0 +1,67 @@
+{
+    "name": "SimCrest ruleset",
+    "description": "SimCrest app rules",
+    "rules": [
+        {
+            "id": "AA0204",
+            "action": "None",
+            "justification": "annoying"
+        },
+        {
+            "id": "AS0051",
+            "action": "None"
+        },
+        {
+            "id": "AS0084",
+            "action": "None"
+        },
+        {
+            "id": "AA0218",
+            "action": "None"
+        },
+        {
+            "id": "AS0053",
+            "action": "None"
+        },
+        {
+            "id": "AA0021",
+            "action": "None"
+        },
+        {
+            "id": "AA0214",
+            "action": "None"
+        },
+        {
+            "id": "AS0054",
+            "action": "None"
+        },
+        {
+            "id": "AS0055",
+            "action": "None"
+        },
+        {
+            "id": "AA0215 ",
+            "action": "None"
+        },
+        {
+            "id": "AA0213",
+            "action": "None"
+        },
+        {
+            "id": "AA0055",
+            "action": "None"
+        },
+        {
+            "id": "AA0217",
+            "action": "None"
+        },
+        {
+            "id": "AA0470",
+            "action": "None"
+        },
+        {
+            "id": "AW0011",
+            "action": "None"
+        }
+   ]
+}
