@@ -1,7 +1,7 @@
 codeunit 50100 "SIMC STRM Stream Examples"
 {
 
-    // In Online BC we are not allowed to access the service tier so we can't upload or download files from the service tier.
+    // In Online BC we are not allowed to access the service tier so we can't upload or download files from the service tier anymore.
     // This means that traditional file handling is not possible.
     // In order to handle importing and exporting files, we need to use Streams and TempBlob. Think of streams as files in memory only. 
     // Streams are maintained similar to files, except we don't have to worry about creating temp files and up- or downloading files any more.
@@ -20,7 +20,7 @@ codeunit 50100 "SIMC STRM Stream Examples"
     // You will also need an Excel file. Just use a small simple excel file, as we don't process the content
 
 
-    // This function will upload a file that the user picks and load it into an InStream and show the content line by line
+    // This function will upload a file that the user picks and load it into an InStream and shows the content line by line
     procedure UploadLocalFileIntoStream()
     var
         TempBlob: Codeunit "Temp Blob";
