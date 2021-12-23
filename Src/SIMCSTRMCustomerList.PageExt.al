@@ -50,7 +50,7 @@ pageextension 50100 "SIMC STRM Customer List" extends "Customer List"
                 var
                     StreamExamples: Codeunit "SIMC STRM Stream Examples";
                 begin
-                    StreamExamples.UploadExcelFileinExcelBuffer();
+                    StreamExamples.UploadExcelFileIntoExcelBuffer();
                 end;
             }
         }
