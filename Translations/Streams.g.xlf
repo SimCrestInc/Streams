@@ -3,10 +3,15 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="Streams">
     <body>
       <group id="body">
-        <trans-unit id="PageExtension 8164630 - Action 4082691582 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+        <trans-unit id="PageExtension 8164630 - Action 1883281834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Create and Download File</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SIMC STRM Customer List - Action SIMC STRM  File - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SIMC STRM Customer List - Action SIMC STRM Download File - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 8164630 - Action 390446866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Upload Excel File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SIMC STRM Customer List - Action SIMC STRM Upload Excel File - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 8164630 - Action 2854014219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Upload File and Show Content</source>

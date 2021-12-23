@@ -3,14 +3,14 @@ codeunit 50100 "SIMC STRM Stream Examples"
 
     // In Online BC we are not allowed to access the service tier so we can't upload or download files from the service tier.
     // This means that traditional file handling is not possible.
-    // In order to handle importing and exporting files, we need to use Streams and TempBlob. Thing of streams as files in memory only. 
-    // Streams ar maintained similar to files, except we don't have to worry about creating temp files and uploading files any more.
+    // In order to handle importing and exporting files, we need to use Streams and TempBlob. Think of streams as files in memory only. 
+    // Streams are maintained similar to files, except we don't have to worry about creating temp files and up- or downloading files any more.
     // There are two streams:
     //        InStream: This stream is going into Business Central. We can read from it and process its content like we read files in NAV
-    //        OutStream: This stream is coming out of Business Central. We can write to the stream like we wrote text into a file
+    //        OutStream: This stream is coming out of Business Central. We can write to the stream like we wrote text into a file in NAV
     // So the direction of the stream is in relation to Business Central.
     //
-    // In order to import/export a physical file from/to the local client, we use TempBlob functions.
+    // In order to import/export a physical file from/to the local client, we use FileManagement function on TempBlob
     // 
     // In order to test this code, you will need a text file with some lines of text like this:
     //      Line 1
@@ -38,6 +38,7 @@ codeunit 50100 "SIMC STRM Stream Examples"
         // Read the InStream line by line
         While not ReadInStream.EOS do begin
             ReadInStream.ReadText(TextLine);
+            // Here we just display the text. This is where you would write code to handle the content
             Message(TextLine);
         end;
     end;
@@ -55,6 +56,7 @@ codeunit 50100 "SIMC STRM Stream Examples"
         // Create the Outstream so we can write to it.
         TempBlob.CreateOutStream(WriteOutStream);
         // We write 3 lines with carriage returns to the Outstream 
+        // This is where you would write code to populate the outsteam and ultimately the final file
         WriteOutStream.WriteText('Exported Line 1');
         WriteOutStream.WriteText();
         WriteOutStream.WriteText('Exported Line 2');
@@ -89,10 +91,8 @@ codeunit 50100 "SIMC STRM Stream Examples"
         Message('Sheet name: ' + SheetName);
         //  Open the Excel book. We use the Stream version of that call
         TempExcelBuffer.OpenBookStream(ReadInStream, SheetName);
-        // Here we read the spreadsheet into ExcelBuffer. Now we can process Excel Buffer
+        // Here we read the spreadsheet into ExcelBuffer
         TempExcelBuffer.ReadSheet();
+        // Here goes code to process ExcelBuffer
     end;
-
-
-
 }

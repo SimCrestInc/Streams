@@ -23,7 +23,7 @@ pageextension 50100 "SIMC STRM Customer List" extends "Customer List"
                     StreamExamples.UploadLocalFileIntoStream();
                 end;
             }
-            action("SIMC STRM  File")
+            action("SIMC STRM Download File")
             {
                 Image = Export;
                 Caption = 'Create and Download File';
@@ -36,6 +36,21 @@ pageextension 50100 "SIMC STRM Customer List" extends "Customer List"
                     StreamExamples: Codeunit "SIMC STRM Stream Examples";
                 begin
                     StreamExamples.DownloadLocalFileFromStream();
+                end;
+            }
+            action("SIMC STRM Upload Excel File")
+            {
+                Image = Import;
+                Caption = 'Upload Excel File';
+                ApplicationArea = All;
+                PromotedCategory = Process;
+                Promoted = true;
+
+                trigger OnAction()
+                var
+                    StreamExamples: Codeunit "SIMC STRM Stream Examples";
+                begin
+                    StreamExamples.UploadExcelFileinExcelBuffer();
                 end;
             }
         }
