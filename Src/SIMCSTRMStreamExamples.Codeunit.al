@@ -59,7 +59,7 @@ codeunit 50100 "SIMC STRM Stream Examples"
         // Create the Outstream so we can write to the TempBlob.
         TempBlob.CreateOutStream(WriteOutStream);
         // We write 3 lines with carriage returns to the Outstream 
-        // This is where you would write code to populate the outstream and ultimately to the downloaded file
+        // This is where you would write code to populate the TempBlob from the OutStream and ultimately to the downloaded file
         WriteOutStream.WriteText('Exported Line 1');
         WriteOutStream.WriteText();
         WriteOutStream.WriteText('Exported Line 2');
