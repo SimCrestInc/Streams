@@ -34,7 +34,7 @@ codeunit 50100 "SIMC STRM Stream Examples"
         // Create the Instream so we can read from it. 
         TempBlob.CreateInStream(ReadInStream);
         // We could use UploadIntoStream here, but we get a lot of error checks and control using BLOBImportWithFilter instead
-        // This will read the file into the Instream
+        // This will read the file into the TempBlob so we can read the file using the InStream
         FileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Select Text file to import', '', 'Text files (*.txt)|*.txt', 'txt');
         // Show File name
         Message('File name: ' + FileName);
@@ -56,7 +56,7 @@ codeunit 50100 "SIMC STRM Stream Examples"
     begin
         // We clear TempBlob. We really don't need to do it here since the local var is already cleared.
         Clear(TempBlob);
-        // Create the Outstream so we can write to it.
+        // Create the Outstream so we can write to the TempBlob.
         TempBlob.CreateOutStream(WriteOutStream);
         // We write 3 lines with carriage returns to the Outstream 
         // This is where you would write code to populate the outstream and ultimately to the downloaded file
@@ -86,7 +86,7 @@ codeunit 50100 "SIMC STRM Stream Examples"
         Clear(TempBlob);
         // Create the Instream so we can read from it.
         TempBlob.CreateInStream(ReadInStream);
-        // Let the user pick the Excel file. This will read the file into the Instream
+        // Let the user pick the Excel file. This will read the file into the TempBlob so we can read the file using the InStream
         FileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Select Excel file to import', '', 'Excel files (*.xlsx)|*.xlsx', 'xlsx');
         // Show File name
         Message('File name: ' + FileName);
@@ -99,4 +99,50 @@ codeunit 50100 "SIMC STRM Stream Examples"
         TempExcelBuffer.ReadSheet();
         // Here goes code to process ExcelBuffer
     end;
+
+    // This is an example how to read a binary file into a custom Blob field in the Item table. 
+    procedure UploadBinaryFileToItem(var Item: Record Item)
+    var
+        TempBlob: Codeunit "Temp Blob";
+        FileManagement: Codeunit "File Management";
+        ReadInStream: InStream;
+        WriteOutStream: OutStream;
+        FileName: Text;
+    begin
+        // We clear TempBlob. We really don't need to do it here since the local var is already cleared.
+        Clear(TempBlob);
+        // Create the Instream so we can read from it.
+        TempBlob.CreateInStream(ReadInStream);
+        // Let the user pick the any file. This will read the file into the TempBlob so we can read it using the InStream
+        FileManagement.BLOBImportWithFilter(TempBlob, 'Select file to import', '', 'All files (*.*)|*.*', '');
+
+        // If a file was loaded we continue the process
+        if FileName <> '' then begin
+            // We create an outstream so we can write into the Blob field on the Item record
+            Item."SIMC STRM Item Attachment".CreateOutStream(WriteOutStream);
+            // Copy the ReadInsteam to WriteOutstream. This will load the binary file (InStream) into the Item Blob field (OutStream)
+            CopyStream(WriteOutStream, ReadInStream);
+            // Modify the Item record to save the Blob
+            Item.Modify();
+        end;
+    end;
+
+    procedure DownloadBinaryFileFromItem(Item: Record Item)
+    var
+        TempBlob: Codeunit "Temp Blob";
+        FileManagement: Codeunit "File Management";
+        ReadInStream: InStream;
+        WriteOutStream: OutStream;
+        NoAttachmentTxt: Label 'Item has not attachment';
+    begin
+        Clear(TempBlob);
+        if not Item."SIMC STRM Item Attachment".HasValue() then
+            error(NoAttachmentTxt);
+        Item.CalcFields("SIMC STRM Item Attachment");
+        Item."SIMC STRM Item Attachment".CreateInStream(ReadInStream);
+        TempBlob.CreateOutStream(WriteOutStream);
+        CopyStream(WriteOutStream, ReadInStream);
+        FileManagement.BLOBExport(TempBlob, Item.Description, true);
+    end;
+
 }
