@@ -107,14 +107,14 @@ codeunit 50100 "SIMC STRM Stream Examples"
     var
         TempBlob: Codeunit "Temp Blob";
         FileManagement: Codeunit "File Management";
-        ReadInStream: InStream;
+        InStream: InStream;
         OutStream: OutStream;
         FileName: Text;
     begin
         // We clear TempBlob. We really don't need to do it here since the local var is already cleared.
         Clear(TempBlob);
         // Create the Instream so we can read from it.
-        TempBlob.CreateInStream(ReadInStream);
+        TempBlob.CreateInStream(InStream);
         // Let the user pick the any file. This will read the file into the TempBlob so we can read it using the InStream
         FileManagement.BLOBImportWithFilter(TempBlob, 'Select file to import', '', 'All files (*.*)|*.*', '');
 
@@ -123,7 +123,7 @@ codeunit 50100 "SIMC STRM Stream Examples"
             // We create an outstream so we can write into the Blob field on the Item record
             Item."SIMC STRM Item Attachment".CreateOutStream(OutStream);
             // Copy the ReadInsteam to WriteOutstream. This will load the binary file (InStream) into the Item Blob field (OutStream)
-            CopyStream(OutStream, ReadInStream);
+            CopyStream(OutStream, InStream);
             // Modify the Item record to save the Blob
             Item.Modify();
         end;
