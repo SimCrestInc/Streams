@@ -1,11 +1,11 @@
-tableextension 50100 "SIMC STRM Item" extends Item
+tableextension 50100 "SIMC STRM Customer" extends Customer
 {
     fields
     {
-        field(50100; "SIMC STRM Item Attachment"; Blob)
+        field(50100; "SIMC STRM Cust Attachment"; Blob)
         {
             DataClassification = CustomerContent;
-            Caption = 'Item Attachment';
+            Caption = 'Customer Attachment';
         }
     }
 }

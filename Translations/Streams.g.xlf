@@ -3,20 +3,40 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="Streams">
     <body>
       <group id="body">
-        <trans-unit id="PageExtension 8164630 - Action 1883281834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
-          <source>Create and Download File</source>
+        <trans-unit id="Codeunit 682441789 - Method 3731458982 - NamedType 816466852" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer has no attachment</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SIMC STRM Customer List - Action SIMC STRM Download File - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SIMC STRM Stream Examples - Method DownloadBinaryFileFromCust - NamedType NoAttachmentTxt</note>
         </trans-unit>
-        <trans-unit id="PageExtension 8164630 - Action 390446866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+        <trans-unit id="PageExtension 2581460609 - Action 4271935160 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Download Binary file from Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SIMC STRM Cust List - Action SIMC STRM Download Blob from Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581460609 - Action 1883281834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Create and Download Text File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SIMC STRM Cust List - Action SIMC STRM Download File - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581460609 - Action 3993329578 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Upload Binary file to Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SIMC STRM Cust List - Action SIMC STRM Upload Blob to Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581460609 - Action 390446866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Upload Excel File</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SIMC STRM Customer List - Action SIMC STRM Upload Excel File - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SIMC STRM Cust List - Action SIMC STRM Upload Excel File - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 8164630 - Action 2854014219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
-          <source>Upload File and Show Content</source>
+        <trans-unit id="PageExtension 2581460609 - Action 2854014219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Upload Text File and Show Content</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SIMC STRM Customer List - Action SIMC STRM Upload File - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension SIMC STRM Cust List - Action SIMC STRM Upload File - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1810516868 - Field 1949722928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Customer Attachment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SIMC STRM Customer - Field SIMC STRM Cust Attachment - Property Caption</note>
         </trans-unit>
       </group>
     </body>

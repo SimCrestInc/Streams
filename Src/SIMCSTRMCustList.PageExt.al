@@ -1,4 +1,4 @@
-pageextension 50100 "SIMC STRM Customer List" extends "Customer List"
+pageextension 50100 "SIMC STRM Cust List" extends "Customer List"
 {
     layout
     {
@@ -11,7 +11,7 @@ pageextension 50100 "SIMC STRM Customer List" extends "Customer List"
             action("SIMC STRM Upload File")
             {
                 Image = Import;
-                Caption = 'Upload File and Show Content';
+                Caption = 'Upload Text File and Show Content';
                 ApplicationArea = All;
                 PromotedCategory = Process;
                 Promoted = true;
@@ -26,7 +26,7 @@ pageextension 50100 "SIMC STRM Customer List" extends "Customer List"
             action("SIMC STRM Download File")
             {
                 Image = Export;
-                Caption = 'Create and Download File';
+                Caption = 'Create and Download Text File';
                 ApplicationArea = All;
                 PromotedCategory = Process;
                 Promoted = true;
@@ -51,6 +51,36 @@ pageextension 50100 "SIMC STRM Customer List" extends "Customer List"
                     StreamExamples: Codeunit "SIMC STRM Stream Examples";
                 begin
                     StreamExamples.UploadExcelFileIntoExcelBuffer();
+                end;
+            }
+            action("SIMC STRM Upload Blob to Cust")
+            {
+                Image = Import;
+                Caption = 'Upload Binary file to Customer';
+                ApplicationArea = All;
+                PromotedCategory = Process;
+                Promoted = true;
+
+                trigger OnAction()
+                var
+                    StreamExamples: Codeunit "SIMC STRM Stream Examples";
+                begin
+                    StreamExamples.UploadBinaryFileToCust(Rec);
+                end;
+            }
+            action("SIMC STRM Download Blob from Cust")
+            {
+                Image = Import;
+                Caption = 'Download Binary file from Customer';
+                ApplicationArea = All;
+                PromotedCategory = Process;
+                Promoted = true;
+
+                trigger OnAction()
+                var
+                    StreamExamples: Codeunit "SIMC STRM Stream Examples";
+                begin
+                    StreamExamples.DownloadBinaryFileFromCust(Rec);
                 end;
             }
         }

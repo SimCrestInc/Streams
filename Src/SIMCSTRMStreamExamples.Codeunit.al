@@ -20,6 +20,8 @@ codeunit 50100 "SIMC STRM Stream Examples"
     //      Line 3
     //
     // You will also need an Excel file. Just use a small simple excel file, as we don't process the content
+    //
+    // Finally we need a bindary file like a PDF file to upload to the customer and download it back to the client
 
 
     // This function will upload a file into TempBlob and we then use an InStream to read the content line by line
@@ -102,8 +104,8 @@ codeunit 50100 "SIMC STRM Stream Examples"
         // Here goes code to process ExcelBuffer
     end;
 
-    // This is an example how to read a binary file into a custom Blob field in the Item table. 
-    procedure UploadBinaryFileToItem(var Item: Record Item)
+    // This is an example how to read a binary file into a custom Blob field in the Customer table. 
+    procedure UploadBinaryFileToCust(var Customer: Record Customer)
     var
         TempBlob: Codeunit "Temp Blob";
         FileManagement: Codeunit "File Management";
@@ -116,42 +118,42 @@ codeunit 50100 "SIMC STRM Stream Examples"
         // Create the Instream so we can read from it.
         TempBlob.CreateInStream(InStream);
         // Let the user pick the any file. This will read the file into the TempBlob so we can read it using the InStream
-        FileManagement.BLOBImportWithFilter(TempBlob, 'Select file to import', '', 'All files (*.*)|*.*', '');
+        Filename := FileManagement.BLOBImportWithFilter(TempBlob, 'Select PDF file to import', '', 'PDF files (*.pdf)|*.pdf', 'pdf');
 
         // If a file was loaded we continue the process
         if FileName <> '' then begin
-            // We create an outstream so we can write into the Blob field on the Item record
-            Item."SIMC STRM Item Attachment".CreateOutStream(OutStream);
-            // Copy the ReadInsteam to WriteOutstream. This will load the binary file (InStream) into the Item Blob field (OutStream)
+            // We create an outstream so we can write into the Blob field on the Customer record
+            Customer."SIMC STRM Cust Attachment".CreateOutStream(OutStream);
+            // Copy the ReadInsteam to WriteOutstream. This will load the binary file (InStream) into Customer Blob field (OutStream)
             CopyStream(OutStream, InStream);
-            // Modify the Item record to save the Blob
-            Item.Modify();
+            // Modify the Customer record to save the Blob
+            Customer.Modify();
         end;
     end;
 
-    procedure DownloadBinaryFileFromItem(Item: Record Item)
+    procedure DownloadBinaryFileFromCust(Customer: Record Customer)
     var
         TempBlob: Codeunit "Temp Blob";
         FileManagement: Codeunit "File Management";
         InStream: InStream;
         OutStream: OutStream;
-        NoAttachmentTxt: Label 'Item has not attachment';
+        NoAttachmentTxt: Label 'Customer has no attachment';
     begin
         // We clear TempBlob. We really don't need to do it here since the local var is already cleared.
         Clear(TempBlob);
         // We check if the TempBlob has a value. If not, we show error
-        if not Item."SIMC STRM Item Attachment".HasValue() then
+        if not Customer."SIMC STRM Cust Attachment".HasValue() then
             error(NoAttachmentTxt);
         // We calculate the Blob field so we can read it
-        Item.CalcFields("SIMC STRM Item Attachment");
-        // Create an InStream so we can read the content of the Item Blob
-        Item."SIMC STRM Item Attachment".CreateInStream(InStream);
+        Customer.CalcFields("SIMC STRM Cust Attachment");
+        // Create an InStream so we can read the content of the Customer Blob
+        Customer."SIMC STRM Cust Attachment".CreateInStream(InStream);
         // Create and OutSream so we can write content to the TempBlob
         TempBlob.CreateOutStream(OutStream);
-        // Copy the InStream from the Item Bloob to the TempBlob Outstream
+        // Copy the InStream from the Customer Blob to the TempBlob Outstream
         CopyStream(OutStream, InStream);
         // Save the file now contained in TempBlob to the local client
-        FileManagement.BLOBExport(TempBlob, Item.Description, true);
+        FileManagement.BLOBExport(TempBlob, Customer.Name + '.pdf', true);
     end;
 
 }
