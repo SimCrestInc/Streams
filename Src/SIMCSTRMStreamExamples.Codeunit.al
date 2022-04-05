@@ -40,13 +40,15 @@ codeunit 50100 "SIMC STRM Stream Examples"
         // We could use UploadIntoStream here, but we get a lot of error checks and control using BLOBImportWithFilter instead
         // This will read the file into the TempBlob so we can read the file using the InStream
         FileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Select Text file to import', '', 'Text files (*.txt)|*.txt', 'txt');
-        // Show File name
-        Message('File name: ' + FileName);
-        // Read the InStream line by line
-        While not InStream.EOS() do begin
-            InStream.ReadText(TextLine);
-            // Here we just display the text. This is where you would write code to handle the content
-            Message(TextLine);
+        if FileName <> '' then begin
+            // Show File name
+            Message('File name: ' + FileName);
+            // Read the InStream line by line
+            While not InStream.EOS() do begin
+                InStream.ReadText(TextLine);
+                // Here we just display the text. This is where you would write code to handle the content
+                Message(TextLine);
+            end;
         end;
     end;
 
